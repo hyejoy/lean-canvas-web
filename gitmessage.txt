@@ -1,0 +1,12 @@
+<type>: <short summary>
+
+- What:
+- Why:
+#- Notes:
+
+# Commit Type
+# feat:     새로운 기능 추가
+# refactor: 기능 변화 없는 구조/성능 개선
+# fix:      버그 수정
+# docs:     문서 수정 (README, 주석 등)
+# chore:    설정, 빌드, 기타 작업
