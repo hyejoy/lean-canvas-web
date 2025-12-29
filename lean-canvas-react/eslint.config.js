@@ -1,30 +1,38 @@
 import js from "@eslint/js";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import { defineConfig, globalIgnores } from "eslint/config";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  // node_modules 내부의 eslint.config.* 파일을 모두 무시하도록 강제
+  {
+    ignores: ["node_modules/**"],
+  },
+
   {
     files: ["**/*.{js,jsx}"],
+
+    plugins: {
+      react,
+    },
+
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-      "prrettier",
+      "prettier",
     ],
+
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: "latest",
+      sourceType: "module",
+      ecmaFeatures: { jsx: true },
       globals: globals.browser,
-      parserOptions: {
-        ecmaVersion: "latest",
-        ecmaFeatures: { jsx: true },
-        sourceType: "module",
-      },
     },
+
     rules: {
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      "react/self-closing-comp": "warn",
     },
   },
 ]);
