@@ -1,0 +1,1 @@
+[ESLint] react/self-closing-comp 규칙 미적용
