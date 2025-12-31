@@ -1,0 +1,2 @@
+"react/self-closing-comp": "warn",
+미해결
