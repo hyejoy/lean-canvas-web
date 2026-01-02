@@ -7,6 +7,7 @@ import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
+import CanvasDetail from "./Pages/CanvasDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        //params 설정은 콜론(:) 사용
+        path: "canvases/:id",
+        element: <CanvasDetail />,
       },
     ],
     errorElement: <ErrorPage />,
