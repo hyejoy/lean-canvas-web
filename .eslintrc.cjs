@@ -13,11 +13,16 @@ module.exports = {
   settings: { react: { version: "18.2" } },
   plugins: ["react-refresh"],
   rules: {
+    "react/prop-types": "off",
     "react/jsx-no-target-blank": "off",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
     ],
     "react/self-closing-comp": "warn",
+    "react/display-name": "off",
+    "no-undef": "error", // 미정의 변수
+    "no-unused-vars": "error", // 사용 안 하는 변수
+    "react/jsx-no-undef": "error", // 미정의 컴포넌트
   },
 };
