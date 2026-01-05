@@ -1,6 +1,11 @@
 import CanvasItem from "./CanvasItem";
 
-export default function CanvasList({ filterdData, isGridView, searchText }) {
+export default function CanvasList({
+  filterdData,
+  isGridView,
+  searchText,
+  onDeleteItem,
+}) {
   if (filterdData.length) {
     return (
       <div
@@ -13,6 +18,10 @@ export default function CanvasList({ filterdData, isGridView, searchText }) {
             title={item.title}
             lastModified={item.lastModified}
             category={item.category}
+            onDelete={(e) => {
+              e.preventDefault();
+              onDeleteItem(item.id);
+            }}
           />
         ))}
       </div>
