@@ -19,7 +19,11 @@ export default function CanvasList({
             lastModified={item.lastModified}
             category={item.category}
             onDelete={(e) => {
-              e.preventDefault();
+              /**
+               * preventDefault는 “무엇을 하지 말지”를 제어하고,
+               * stopPropagation은 “누가 알지 못하게 할지”를 제어한다.
+               */
+              e.preventDefault(); // 기본동작을 막는 메서드 (Nav의 href이동 막기)
               onDeleteItem(item.id);
             }}
           />
