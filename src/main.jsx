@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         //params 설정은 콜론(:) 사용
-        path: "canvases/:id",
+        path: "canvases/:cardId",
         element: <CanvasDetail />,
       },
     ],

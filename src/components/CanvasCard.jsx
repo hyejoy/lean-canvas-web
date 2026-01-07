@@ -1,6 +1,20 @@
 import { FaPlus } from "react-icons/fa";
+import { dummyNotes } from "../data/canvasData";
+import CanvasMemo from "./CanvasMemo";
 
-export default function CanvasCard({ title, memo, isSubtitle = false }) {
+export default function CanvasCard({
+  cardId,
+  cardItemId,
+  title,
+  isSubtitle = false,
+}) {
+  const memoList = dummyNotes.filter(
+    (note) => note.cardId === cardId && note.cardItemId === cardItemId
+  );
+
+  // console.log("props: ", cardId, cardItemId, title, isSubtitle);
+  // console.log("📝📝memoList: ", memoList);
+
   return (
     <>
       <div className="row-span-1 bg-white min-h-48 border border-collapse border-gray-300">
@@ -12,7 +26,16 @@ export default function CanvasCard({ title, memo, isSubtitle = false }) {
             <FaPlus />
           </button>
         </div>
-        <div className="space-y-3 min-h-32 p-3">{memo}</div>
+        {/* memoList */}
+        <div className=" space-y-3 min-h-32 p-3">
+          {memoList.map((memo) => (
+            <CanvasMemo
+              key={memo.noteId}
+              content={memo.content}
+              backgroundColor={memo.color}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { FaCheck, FaEdit } from "react-icons/fa";
+import { dummyCard } from "../data/canvasData";
+import { useCanvasDispatch } from "../context/CanvasContext";
 
-function CanvasTitle() {
+function CanvasTitle({ cardId }) {
+  const dispatch = useCanvasDispatch();
+  console.log(dispatch);
+  const cardInfo = dummyCard.find((card) => card.cardId === cardId);
   const [editing, setEditing] = useState(false);
-  const [title, setTitle] = useState("Lean Canvas");
+  const [title, setTitle] = useState(cardInfo.title);
   const [editingTitle, setEditingTitle] = useState(title);
-
+  // 이름 변경시 dispatch 사용하기
   const toggleEdit = () => {
     setEditing((prev) => !prev);
     if (editing) setTitle(editingTitle);
@@ -13,6 +18,10 @@ function CanvasTitle() {
 
   const handleEditingTitle = (e) => {
     setEditingTitle(e.target.value);
+  };
+
+  const onEditTitle = () => {
+    dispatch({ action: "edit", cardId, title });
   };
 
   return (
@@ -30,7 +39,7 @@ function CanvasTitle() {
             aria-label="Save title"
             onClick={toggleEdit}
           >
-            <FaCheck />
+            <FaCheck onClick={onEditTitle} />
           </button>
         </div>
       ) : (
