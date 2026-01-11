@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa";
-import { dummyNotes } from "../data/canvasData";
 import CanvasMemo from "./CanvasMemo";
+import { useMemoContext, useMemoDispatchContext } from "../context/MemoContext";
 
 export default function CanvasCard({
   cardId,
@@ -8,9 +8,20 @@ export default function CanvasCard({
   title,
   isSubtitle = false,
 }) {
-  const memoList = dummyNotes.filter(
-    (note) => note.cardId === cardId && note.cardItemId === cardItemId
+  const memos = useMemoContext();
+  const dispatch = useMemoDispatchContext();
+
+  const filteredMemos = memos.filter(
+    (memo) => memo.cardId === cardId && memo.cardItemId === cardItemId,
   );
+
+  const handleAddMemo = () => {
+    dispatch({
+      type: "added",
+      cardId,
+      cardItemId,
+    });
+  };
 
   // console.log("props: ", cardId, cardItemId, title, isSubtitle);
   // console.log("📝📝memoList: ", memoList);
@@ -22,18 +33,17 @@ export default function CanvasCard({
           className={`flex items-start justify-between px-3 py-2 ${!isSubtitle ? "bg-gray-100 border-b border-b-gray-300" : ""} `}
         >
           <h3 className="font-bold">{title}</h3>
-          <button className="bg-blue-400  text-white p-1.5 text-xs rounded-md">
+          <button
+            onClick={handleAddMemo}
+            className="bg-blue-400  text-white p-1.5 text-xs rounded-md"
+          >
             <FaPlus />
           </button>
         </div>
         {/* memoList */}
         <div className=" space-y-3 min-h-32 p-3">
-          {memoList.map((memo) => (
-            <CanvasMemo
-              key={memo.noteId}
-              content={memo.content}
-              backgroundColor={memo.color}
-            />
+          {filteredMemos?.map((memo) => (
+            <CanvasMemo key={memo.memoId} memoInfo={memo} />
           ))}
         </div>
       </div>

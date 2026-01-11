@@ -111,9 +111,9 @@ export const dummyBottonCardItems = [
 ];
 
 // 노트데이터
-export const dummyNotes = [
+export const dummyMemos = [
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-1",
     content: "사용자들이 문제를 명확히 인식하지 못함",
@@ -121,7 +121,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-2",
     content: "요구사항이 문서로 정리되지 않음",
@@ -129,7 +129,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-3",
     content: "기능 우선순위가 계속 변경됨",
@@ -137,7 +137,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-4",
     content: "디자인과 개발 간 커뮤니케이션 부족",
@@ -145,7 +145,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-5",
     content: "초기 기술 스택 선정이 부적절함",
@@ -153,7 +153,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-6",
     content: "일정 산정이 현실적이지 않음",
@@ -161,7 +161,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-7",
     content: "테스트 케이스가 충분하지 않음",
@@ -169,7 +169,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-8",
     content: "에러 처리 기준이 명확하지 않음",
@@ -177,7 +177,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-9",
     content: "상태 관리 구조가 복잡해짐",
@@ -185,7 +185,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-10",
     content: "성능 최적화 고려가 부족함",
@@ -193,7 +193,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-11",
     content: "배포 환경과 로컬 환경 차이로 오류 발생",
@@ -201,7 +201,7 @@ export const dummyNotes = [
     color: NOTE_DEFAULT_COLOR,
   },
   {
-    noteId: uuidv4(),
+    memoId: uuidv4(),
     cardId: "test1",
     cardItemId: "item-12",
     content: "유지보수성을 고려하지 않은 구조",

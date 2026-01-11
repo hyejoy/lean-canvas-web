@@ -12,3 +12,11 @@ x를 누르게되면
 
 
 CLSX 적용하기
+
+1. Home.jsx delete 아이콘 기능구현
+2. 🗓️ CanvasTitle 변경시 dispatch 기능 추가✅
+3. 🗓️ CanvasCard + 버튼(FaPlus)클릭시 CanvasMemo 추가기능 구현
+4. CanvasMemo 색깔변경 dispatch 기능 추가
+5. CanvasMemo 내용변경 dispatch 기능 추가  ⭐이거 하는중
+6. CanvasMemo 삭제 dispatch 기능 추가
+

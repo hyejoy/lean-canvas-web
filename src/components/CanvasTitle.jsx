@@ -1,27 +1,40 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaCheck, FaEdit } from "react-icons/fa";
-import { dummyCard } from "../data/canvasData";
-import { useCanvasDispatch } from "../context/CanvasContext";
+import {
+  useCanvasDispatch,
+  useLeanCanvasContext,
+} from "../context/CanvasContext";
 
 function CanvasTitle({ cardId }) {
+  const leanCanvas = useLeanCanvasContext();
   const dispatch = useCanvasDispatch();
-  console.log(dispatch);
-  const cardInfo = dummyCard.find((card) => card.cardId === cardId);
+  const cardInfo = leanCanvas.find((card) => card.cardId === cardId);
+  const { title } = cardInfo;
   const [editing, setEditing] = useState(false);
-  const [title, setTitle] = useState(cardInfo.title);
   const [editingTitle, setEditingTitle] = useState(title);
-  // 이름 변경시 dispatch 사용하기
+
+  const titleRef = useRef();
+  const handleSaveTitle = () => {
+    console.log(title);
+
+    if (!editingTitle) {
+      alert("제목을 입력해주세요.");
+      titleRef.current?.focus();
+      setEditing(true);
+      return;
+    }
+    dispatch({
+      type: "edit",
+      cardId,
+      title: editingTitle,
+    });
+  };
   const toggleEdit = () => {
     setEditing((prev) => !prev);
-    if (editing) setTitle(editingTitle);
   };
 
   const handleEditingTitle = (e) => {
     setEditingTitle(e.target.value);
-  };
-
-  const onEditTitle = () => {
-    dispatch({ action: "edit", cardId, title });
   };
 
   return (
@@ -29,6 +42,7 @@ function CanvasTitle({ cardId }) {
       {editing ? (
         <div className="flex items-center">
           <input
+            ref={titleRef}
             value={editingTitle}
             type="text"
             className="text-4xl font-bold text-center text-blue-600 bg-transparent border-b-2 border-blue-600 focus:outline-none"
@@ -37,9 +51,12 @@ function CanvasTitle({ cardId }) {
           <button
             className="ml-2 p-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
             aria-label="Save title"
-            onClick={toggleEdit}
+            onClick={() => {
+              toggleEdit();
+              handleSaveTitle();
+            }}
           >
-            <FaCheck onClick={onEditTitle} />
+            <FaCheck />
           </button>
         </div>
       ) : (
